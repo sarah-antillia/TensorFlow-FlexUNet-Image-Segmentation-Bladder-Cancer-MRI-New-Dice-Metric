@@ -141,7 +141,6 @@ Augmented ImageMaskDataset from the master by using the following offline augmen
 <h3>3.1 New Evaluation Metric and Loss</h3>
 In this experiment, we used the following <a href="./src/dice_coef_multiclass.py"><b>dice_coef_foreground</b></a> 
 Dice coefficient as a metric function,
-<hr>
 <pre>
 """
 This metric calculates the Dice coefficient exclusively for the foreground, excluding the background.
@@ -165,11 +164,9 @@ def dice_coef_foreground(y_true, y_pred, epsilon=1e-6):
     dice = (2. * intersection + epsilon) / (sum_ + epsilon)
     return dice
 </pre>
-<hr>
 <br>
 Furthermore, we used 
 <a href="./src/focal_dice_loss.py"><b>CategoricalFocalDiceLoss</b></a> class to define our custom loss function.<br>
-<hr>
 <pre>
 # Please refer to the Custom losses
 # in https://www.tensorflow.org/guide/keras/training_with_built_in_methods
@@ -197,7 +194,6 @@ class CategoricalFocalDiceLoss(tf.keras.losses.Loss):
         config.update({"epsilon": self.epsilon})
         return config
 </pre> 
-<hr>
 <br> 
 <h3>3.2 Training TensorFlowFlexUNet Model</h3>
  We trained the Bladder-Cancer TensorFlowFlexUNet model using the following
