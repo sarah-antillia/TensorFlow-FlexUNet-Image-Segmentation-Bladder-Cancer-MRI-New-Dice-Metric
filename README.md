@@ -28,7 +28,7 @@ dice_coef_multiclass</b></a> metric.
 <hr>
 <b>Actual Image Segmentation for Bladder-Cancer Images of 512x512 pixels</b><br>
 As shown below, the inferred masks resemble the ground-truth masks except for the third case. 
-However, the green bladde wall in the ground truth seems slightly inappropriate.<br><br>
+However, the green bladder wall in the ground truth seems slightly inappropriate.<br><br>
 <b>class_color_map = {Cancer: dark-red, Wall: green} </b><br><br>
 <table>
 <tr>
