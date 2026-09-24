@@ -73,7 +73,7 @@ Unknown
 <br>
 <br>
 <h3>
-2 Bladder-Cancer Ultrasound ImageMask Dataset
+2. Bladder-Cancer Ultrasound ImageMask Dataset
 </h3>
 <h3>2.1 Download ImageMask Dataset</h3>
  If you would like to train this Bladder-Cancer Segmentation model,
@@ -136,7 +136,7 @@ Augmented ImageMaskDataset from the master by using the following offline augmen
 <br>
 
 <h3>
-3 Train TensorFlowFlexUNet Model
+3. Train TensorFlowFlexUNet Model
 </h3>
 <h3>3.1 New Evaluation Metric and Loss</h3>
 In this experiment, we used the following <a href="./src/dice_coef_multiclass.py"><b>dice_coef_foreground</b></a> 
@@ -264,7 +264,6 @@ Enabled early stopping callback with the patience parameter.
 [train]
 patience      = 10
 </pre>
-
 <b>RGB Color map</b><br>
 Specified RGB color map dict for Bladder-Cancer 2 classes.<br>
 <pre>
@@ -274,9 +273,7 @@ mask_file_format = ".png"
 ; Bladder-Cancer RGB color map dict for 1+2 classes.
 ;      Background: black, Cancer: dark_red, Wall: green
 rgb_map = {(0,0,0):0,(180,20,20):1,(0,255,0):2}
-
 </pre>
-
 <b>Epoch change inference callback</b><br>
 Enabled <a href="./src/EpochChangeInferencer.py">epoch_change_infer callback</a></b>.<br>
 <pre>
@@ -285,7 +282,6 @@ epoch_change_infer       = True
 epoch_change_infer_dir   =  "./epoch_change_infer"
 num_infer_images         = 6
 </pre>
-
 By using this callback, on every epoch change, the inference procedure can be called
  for 6 images in the <b>mini_test</b> folder. This will help you confirm how the predicted mask changes 
  at each epoch during your training process.<br> 
@@ -314,7 +310,7 @@ In this experiment, the training process was stopped at epoch 42 by EarlyStoppin
 <img src="./projects/TensorFlowFlexUNet/Bladder-Cancer/eval/train_losses.png" width="520" height="auto"><br>
 <br>
 <h3>
-4 Evaluation
+4. Evaluation
 </h3>
 Please move to <b>./projects/TensorFlowFlexUNet/Bladder-Cancer</b> folder,<br>
 and run the following bat file to evaluate the TensorFlowUNet model for Bladder-Cancer.<br>
@@ -325,11 +321,9 @@ This runs the following command.
 <pre>
 python ../../../src/TensorFlowFlexUNetEvaluator.py ./train_eval_infer_aug.config
 </pre>
-
 Evaluation console output:<br>
 <img src="./projects/TensorFlowFlexUNet/Bladder-Cancer/asset/evaluate_console_output_at_epoch42.png" width="1024" height="auto">
 <br><br>Image-Segmentation-Bladder-Cancer
-
 <a href="./projects/TensorFlowFlexUNet/Bladder-Cancer/evaluation.csv">evaluation.csv</a><br>
 The loss (<b>categorical_focal_dice_loss</b>) on Bladder-Cancer/test was not low, but it was not extremely worse.
 However, <b>dice_coef_foreground</b> was not high, contrary to our expectations, as shown below.
@@ -341,7 +335,7 @@ You might use other metric function something
 like a <a href="./src/dice_coef_multiclass.py"><b>dice_coef_hybrid</b></a> instead of the <b>dice_coef_foreground</b>.
 <br>
 <h3>
-5 Inference
+5. Inference
 </h3>
 Please move to <b>./projects/TensorFlowFlexUNet/Bladder-Cancer</b> folder
 and run the following bat file to infer segmentation regions for images using the trained TensorFlowUNet model for Bladder-Cancer.<br>
