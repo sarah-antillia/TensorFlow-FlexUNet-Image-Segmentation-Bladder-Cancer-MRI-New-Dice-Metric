@@ -1,0 +1,2 @@
+categorical_focal_dice_loss,0.0508
+dice_coef_foreground,0.477
