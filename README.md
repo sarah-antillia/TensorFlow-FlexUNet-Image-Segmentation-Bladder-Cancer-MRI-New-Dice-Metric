@@ -173,6 +173,7 @@ Please refer to the Custom losses
 in https://www.tensorflow.org/guide/keras/training_with_built_in_methods
 """ 
 class CategoricalFocalDiceLoss(tf.keras.losses.Loss):
+ 
     def __init__(self, epsilon=1e-6, name="categorical_focal_dice_loss"):
         super().__init__(name=name)
         self.epsilon = epsilon
