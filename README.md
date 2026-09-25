@@ -2,7 +2,7 @@
 Sarah T. Arai<br>
 Software Laboratory antillia.com<br><br>
 2026/09/26: Updated 
-<a href="./src/dice_coef_multiclass.py"><b>dice_coef_hybrid</b></a> function.<br>
+<a href="./src/dice_coef_multiclass.py"><b>dice_coef_hybrid</b></a> function to calculate a weighted average.<br>
 2026/09/25: Updated to use 
 <a href="./src/dice_coef_multiclass.py"><b>dice_coef_foreground</b></a>
  instead of <b>dice_loss_multiclass</b> as a metric function.<br>
