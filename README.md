@@ -1,6 +1,8 @@
-<h2>TensorFlow-FlexUNet-Image-Segmentation-Bladder-Cancer-MRI-New-Dice-Metric (2026/09/25)</h2>
+<h2>TensorFlow-FlexUNet-Image-Segmentation-Bladder-Cancer-MRI-New-Dice-Metric (Updated: 2026/09/26)</h2>
 Sarah T. Arai<br>
 Software Laboratory antillia.com<br><br>
+2026/09/26: Updated 
+<a href="./src/dice_coef_multiclass.py"><b>dice_coef_hybrid</b></a> function.<br>
 2026/09/25: Updated to use 
 <a href="./src/dice_coef_multiclass.py"><b>dice_coef_foreground</b></a>
  instead of <b>dice_loss_multiclass</b> as a metric function.<br>
@@ -333,6 +335,19 @@ dice_coef_foreground,0.477
 </pre>
 You might use other metric function something 
 like a <a href="./src/dice_coef_multiclass.py"><b>dice_coef_hybrid</b></a> instead of the <b>dice_coef_foreground</b>.
+<pre>
+""" 
+This "dice_coef_hybrid" metric function calculates a weighted average of "dice_coef_multiclass" and 
+"dice_coef_foreground" using two weight parameters, alpha and beta. 
+These parameters can be determined based on the pixel distribution of the foreground and background 
+in a mask image.
+"""
+def dice_coef_hybrid(y_true, y_pred, alpha = 1.5, beta = 0.5):
+    bg_fg_dice   = dice_coef_multiclass(y_true, y_pred, smooth=1)
+    fg_only_dice = dice_coef_foreground(y_true, y_pred, epsilon=1e-6)
+    mean_dice    = (bg_fg_dice * alpha + fg_only_dice * beta) / (alpha + beta)
+    return mean_dice
+</pre>
 <br>
 <h3>
 5. Inference

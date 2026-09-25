@@ -66,11 +66,15 @@ def dice_loss_foreground(y_true, y_pred, epsilon=1e-6):
     return 1.0 - K.mean(dice)
 
 # 2026/09/24
-# Experimantal metric : 
-# This is an arithmetic average as shown below, not weighted average.
-# dice_coef_hybrid =  (bg_fg_dice + fg_only_dice) /2.0
-def dice_coef_hybrid(y_true, y_pred):
+# 2026/09/26 Modified to calculate a weighted average
+""" 
+This "dice_coef_hybrid" metric function calculates a weighted average of "dice_coef_multiclass" and 
+"dice_coef_foreground" using two weight parameters, alpha and beta. 
+These parameters can be determined based on the pixel distribution of the foreground and background 
+in a mask image.
+"""
+def dice_coef_hybrid(y_true, y_pred, alpha = 1.5, beta = 0.5):
     bg_fg_dice   = dice_coef_multiclass(y_true, y_pred, smooth=1)
     fg_only_dice = dice_coef_foreground(y_true, y_pred, epsilon=1e-6)
-    mean_dice    = (bg_fg_dice + fg_only_dice) / 2.0
+    mean_dice    = (bg_fg_dice * alpha + fg_only_dice * beta) / (alpha + beta)
     return mean_dice
