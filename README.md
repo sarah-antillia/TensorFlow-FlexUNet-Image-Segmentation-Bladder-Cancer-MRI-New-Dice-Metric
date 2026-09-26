@@ -94,8 +94,8 @@ Expand the downloaded ImageMaskDataset and put it under the <b>./dataset</b> fol
     │   ├─images
     │   └─masks
     └─valid
-         ├─images
-         └─masks
+        ├─images
+        └─masks
 </pre>
 <br>
 <b>Bladder-Cancer Statistics</b><br>
@@ -114,9 +114,9 @@ The folder structure of the original dataset is as follows.
  │   └─1994.png
  │ 
  └─tumor_label
-      ├─Label19.png
+     ├─Label19.png
 ...
-      └─Label1994.png
+     └─Label1994.png
 </pre>
 <b>Step 1</b><br>
 We generated a 512x512-pixel PNG master dataset with colorized masks 
@@ -152,8 +152,8 @@ occurs when background pixels occupy an overwhelmingly large portion of a mask i
 def dice_coef_foreground(y_true, y_pred, epsilon=1e-6):
     """
     Args:
-        y_true: Ground truth tensor (one-hot encoded). Shape: (batch, height, width, num_classes)
-        y_pred: Prediction tensor (probabilities). Shape: (batch, height, width, num_classes)
+      y_true: Ground truth tensor (one-hot encoded). Shape: (batch, height, width, num_classes)
+      y_pred: Prediction tensor (probabilities). Shape: (batch, height, width, num_classes)
     """
     y_true = tf.cast(y_true, tf.float32)
     # Get foregrounds by excludeing backgrounds (channel 0)
